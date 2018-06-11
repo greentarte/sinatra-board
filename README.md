@@ -8,7 +8,7 @@
 
 `$ gem install sinatra-reloader`
 
-시작 페이지 만들기
+##### 시작 페이지 만들기(routing 설징 및 View 설정)
 
 ```ruby
 # app.rb
@@ -26,13 +26,75 @@ end
 
 ##### Tip html:5 입력 후 tab키를 누르면 기본 html5기준 템플릿이 생성됨
 
+##### params
 
+1. variable routing
+
+   ```ruby
+   #app.rb
+   get '/hello/:name'
+   	@name = params[:name]
+   	erb :name
+   end
+   ```
+
+
+
+2. `form`tag를 통해서 받는 법
+
+   ```HTML
+   <form action="/posts/create">
+       제목 : <input name="title">
+       </form>
+   ```
+
+   ```ruby
+   # app.rb
+   # params
+   # title("블라블라")
+   get '/posts/create' do
+      @title = params[:title]
+   end
+   ```
+
+   
 
 ##### 폴더구조
 
 - app.rb
+
 - views/
+
   - erb
+
+  - layout.erb  
+
+    > layout.erb는  views폴더 상위에 있어야함
+
+
+
+##### layout.erb
+
+```erb
+<html>
+    <head>
+        <body>
+            <%= yield %>
+        </body>
+    </head>
+</html>
+```
+
+```ruby
+def hello
+    puts "hello"
+    yield
+    puts "bye"
+end
+# {} : block / 코드 덩어리
+hello{ puts "takhee"}
+# => hello takhee bye
+```
 
 
 
@@ -146,7 +208,33 @@ Post.auto_upgrade!
   Post.get(1).destory
   ```
 
-  
+
+
+##### CRUD 만들기
+
+Create : action이 두개 필요
+
+```ruby
+# 사용자에게 입력받는 창
+get '/posts/new' do
+end
+
+# 실제로 db에 저장하는 곳
+get 'posts/create' do
+    Post.create(title: params[:title], body:params[:body])
+end
+```
+
+Read: variable routing
+
+```ruby
+# app.rb
+get 'posts/:id' do
+ @post = Post.get(params[:id])
+end
+```
+
+
 
 > layout.erb는 views폴더 밖에 위치해야함
 

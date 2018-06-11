@@ -66,3 +66,14 @@ end
 # p.save --> insert가 됨
 # post.get(id) id값이 맞는값을 1개 가져옴
 # post.first(title:"123")
+
+
+# CRUD - Read
+# Variable routing을 통해서 특정한 게시글을 가져온다.
+
+get '/posts/:id' do
+    
+    @id = params[:id] #특정한 아이디의 값을 가져옴 id Primary key
+    @post=Post.get(@id) #DB에서 찾는다
+    erb :'posts/show'
+end
