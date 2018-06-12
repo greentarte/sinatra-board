@@ -244,4 +244,11 @@ end
 
 1. [statrt]('https://getbootstrap.com/docs/4.1/getting-started/introduction/')
    - CSS관련 태그 복사해서 붙여놓기
-   - 
+   
+2. 기타 컴포넌트 및 구성요소 찾아서 복사 붙여넣기 후 수정해서 사용
+
+
+# 설치된 gem 확인  
+ [링크]('http://ruby-korea.github.io/bundler-site/')
+- $ gem install bundler
+  
