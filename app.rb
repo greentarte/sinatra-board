@@ -1,3 +1,4 @@
+gem 'json', '~> 1.6'
 require "sinatra"
 require "sinatra/reloader"
 require ".model.rb"

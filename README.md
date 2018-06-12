@@ -244,11 +244,29 @@ end
 
 1. [statrt]('https://getbootstrap.com/docs/4.1/getting-started/introduction/')
    - CSS관련 태그 복사해서 붙여놓기
-   
 2. 기타 컴포넌트 및 구성요소 찾아서 복사 붙여넣기 후 수정해서 사용
 
+##### bundler를 통한 gem 관리
 
-# 설치된 gem 확인  
- [링크]('http://ruby-korea.github.io/bundler-site/')
-- $ gem install bundler
-  
+> 어플리케이션의 의존성(dependency)를 관리해주는 bundler
+
+1. bundler 설치
+
+   `gem install bundler`
+
+2. `Gemfile` 작성 : 루트 디렉토리에 만들기
+
+   ```ruby
+   source 'https://rubygems.org'
+   gem 'sinatra'
+   gem 'sinatra-reloader'
+   gem 'datamapper'
+   gem 'dm-sqlite-adapter'
+   ```
+
+3. `gem`설치
+
+   `$ bundle install`
+
+
+
